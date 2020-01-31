@@ -12,6 +12,7 @@ sudo systemctl enable docker.service
 sudo gpasswd -a "${USER}" docker
 
 # Install kubeadm
+sudo apt-get install -y gnupg gnupg2
 curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg \
   | sudo apt-key add -
 echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" \
