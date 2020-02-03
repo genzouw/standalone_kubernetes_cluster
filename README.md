@@ -13,7 +13,11 @@ Use the `apt-get` command.
 
 ## Installation
 
-No installation is required.
+All you have to do is run the following command:
+
+```bash
+$ curl -o - "https://raw.githubusercontent.com/genzouw/standalone_kubernetes_cluster/master/install_a_standalone_kubernetes_cluster.sh" | sh -
+```
 
 ## Usage
 
