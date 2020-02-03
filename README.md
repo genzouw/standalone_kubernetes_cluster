@@ -36,13 +36,6 @@ Just run this shell script.
 The user running the script must have permission to execute the `sudo` command.
 If possible, try to run without a password.
 
-## Relase Note
-
-| date       | version | note           |
-| ---        | ---     | ---            |
-| 2020-01-26 | 0.1     | first release. |
-
-
 ## License
 
 This software is released under the MIT License, see LICENSE.
