@@ -4,7 +4,7 @@
 
 This simple shell script helps build a "standalone" Kubernetes cluster on an extra (eg, old) PC.
 
-*Please contact me anytime if you have a problem or request! My information is posted at the bottom of this document.*
+_Please contact me anytime if you have a problem or request! My information is posted at the bottom of this document._
 
 ## Dependencies
 
@@ -16,13 +16,12 @@ Use the `apt-get` command.
 All you have to do is run the following command:
 
 ```bash
-$ curl -o - "https://raw.githubusercontent.com/genzouw/standalone_kubernetes_cluster/master/install_a_standalone_kubernetes_cluster.sh" | sh -
+curl -o - "https://raw.githubusercontent.com/genzouw/standalone_kubernetes_cluster/master/install_a_standalone_kubernetes_cluster.sh" | sh -
 ```
 
 ## Usage
 
-***Use the `sudo swapoff -a` command to disable the swap function. If you want to keep the swap function enabled, you cannot use this script.**
-
+**\*Use the `sudo swapoff -a` command to disable the swap function. If you want to keep the swap function enabled, you cannot use this script.**
 
 Usage is very simple!
 Just run this shell script.
@@ -40,12 +39,11 @@ If possible, try to run without a password.
 
 This software is released under the MIT License, see LICENSE.
 
-
 ## Author Information
 
 [genzouw](https://genzouw.com)
 
-* Twitter   : @genzouw ( https://twitter.com/genzouw )
-* Facebook  : genzouw ( https://www.facebook.com/genzouw )
-* LinkedIn  : genzouw ( https://www.linkedin.com/in/genzouw/ )
-* Gmail     : genzouw@gmail.com
+- Twitter : @genzouw ( <https://twitter.com/genzouw> )
+- Facebook : genzouw ( <https://www.facebook.com/genzouw> )
+- LinkedIn : genzouw ( <https://www.linkedin.com/in/genzouw/> )
+- Gmail : <genzouw@gmail.com>
