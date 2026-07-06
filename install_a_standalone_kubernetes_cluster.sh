@@ -28,7 +28,7 @@ sudo kubeadm init \
 
 mkdir -p $HOME/.kube
 sudo cp -f /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
+sudo chown "$(id -u):$(id -g)" "$HOME/.kube/config"
 
 # Install flannel resource
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
