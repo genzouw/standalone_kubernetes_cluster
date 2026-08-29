@@ -111,4 +111,5 @@ Issue では「なぜ既存の無料サービスでは目的を達成できな�
 
 ## 7. 本ポリシーの適用範囲
 
-本ポリシーは [@genzouw](https://github.com/genzouw) が公開しているすべての公開リポジトリに共通で適用されます。
+本ポリシーは、本ファイルが配置されているリポジトリ [`genzouw/standalone_kubernetes_cluster`](https://github.com/genzouw/standalone_kubernetes_cluster) に適用されます。
+[@genzouw](https://github.com/genzouw) が公開する他のリポジトリへ同様のポリシーを適用したい場合は、配布・同期の仕組みがないため、当該リポジトリに個別に `AGENTS.md` を配置してください。
