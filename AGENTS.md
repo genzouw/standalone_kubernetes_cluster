@@ -24,13 +24,13 @@
 - **MUST NOT**: LLM プロバイダの API キー / トークンを GitHub Secrets に登録し、CI ワークフロー / GitHub Action から呼び出す構成の追加。
   - 該当する API キー例 (これらに限らない):
     - `GEMINI_API_KEY`, `GOOGLE_API_KEY`, `GOOGLE_GENERATIVE_AI_API_KEY`
-    - `OPENAI_API_KEY`, `OPENAI_API_BASE_URL`
+    - `OPENAI_API_KEY`
     - `ANTHROPIC_API_KEY`, `CLAUDE_API_KEY`, `CLAUDE_CODE_OAUTH_TOKEN`
     - `MISTRAL_API_KEY`, `COHERE_API_KEY`, `GROQ_API_KEY`
     - `DEEPSEEK_API_KEY`, `PERPLEXITY_API_KEY`, `XAI_API_KEY`, `TOGETHER_API_KEY`
     - `HUGGINGFACE_API_TOKEN` (推論 API として使う場合)
   - **「無料枠内に収まる前提」での利用も MUST NOT です**。レート制限到達時に課金が始まる構造そのものを禁止しています。
-  - **OpenAI 互換エンドポイント経由 (`OPENAI_API_BASE_URL` を Gemini や DeepSeek 等に向けるパターン) も同じく MUST NOT** です。鍵の名称ではなく「課金可能な API へ繋がる鍵を登録する行為」を禁止しています。
+  - `OPENAI_API_BASE_URL` はそれ自体が認証情報ではなく接続先 URL であるため、上記のキー一覧とは分離して扱います。**課金可能な外部 API (Gemini や DeepSeek 等の有料 OpenAI 互換エンドポイント) へ向けて `OPENAI_API_BASE_URL` を GitHub Secrets に登録する構成は MUST NOT** です。鍵の名称ではなく「課金可能な API へ繋がる鍵・接続先を登録する行為」を禁止しています。一方、Secrets 登録を伴わずローカル LLM (Ollama 等、GitHub-hosted runner 上で動作するもの) を指す場合は 1.3 節の MAY に従います。
 - **MUST NOT**: 従量課金の外部 API キーを要する検索・スクレイピング系サービスの CI 組み込み (`TAVILY_API_KEY`, `EXA_API_KEY`, `SERPAPI_KEY`, `BRAVE_API_KEY` 等)。
 - **MUST NOT**: 有料プラン / 有料ライセンス / 有料トライアル / クレジットカード登録を必要とするサービスの CI 組み込み。
 - **MUST NOT**: 公開 OSS リポジトリでも Pro プラン以上を要求する SaaS の追加。
