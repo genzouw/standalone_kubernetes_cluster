@@ -16,7 +16,7 @@
     ],
     "minimumReleaseAge": null,
     "schedule": [],
-    "addLabels": ["security"]
+    "addLabels": ["bug"]
   },
   "packageRules": [
     {
