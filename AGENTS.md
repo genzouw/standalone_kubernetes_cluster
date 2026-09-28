@@ -4,7 +4,7 @@
 キーワードの解釈は [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt) ([日本語訳](https://www.nic.ad.jp/ja/tech/ipa/RFC2119JA.html)) に従います (MUST / MUST NOT / SHOULD / SHOULD NOT / MAY)。
 
 このファイルは [agents.md 規格](https://agents.md/) に従って配置しています。Jules / Codex / GitHub Copilot など agents.md をネイティブサポートするエージェントは、このファイルをリポジトリルートから自動的に読み込みます。
-一方 Claude Code は標準では `CLAUDE.md` を読み込み、`AGENTS.md` をネイティブ読込しません。Claude Code で作業する場合は、リポジトリルートに `CLAUDE.md` を配置し `@AGENTS.md` で本ファイルを取り込む（またはシンボリックリンクを作成する）ことで、本ポリシーを確実に読み込ませてください。同様に agents.md をネイティブサポートしないツールを使う場合も、各ツールの手順に従って本ファイルを取り込んでください。
+agents.md をネイティブサポートしないツールを使う場合は、各ツールの手順に従って本ファイルを取り込んでください。
 
 ---
 
@@ -59,7 +59,7 @@
 ### 1.4 ローカル環境と CI の区別
 
 本ポリシーが禁止しているのは **CI/CD および自動化ワークフローへの組み込み** です。
-開発者個人のローカル環境で、自分のアカウント・自分の負担で AI ツール (Claude Code / Cursor / Gemini CLI 等) を使うことは **MAY** です。
+開発者個人のローカル環境で、自分のアカウント・自分の負担で AI ツール (Claude Code / Cursor / Antigravity CLI（agy）等) を使うことは **MAY** です。
 
 `ANTHROPIC_API_KEY` / `GEMINI_API_KEY` などを自分のシェルの環境変数として `export` して使うことは **MAY** です。
 一方、同じ鍵を GitHub Secrets へ登録し CI から参照することは **MUST NOT** です。
