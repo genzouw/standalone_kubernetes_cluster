@@ -5,7 +5,8 @@
   "semanticCommitScope": "deps",
   "timezone": "Asia/Tokyo",
   "schedule": ["* 8-12 * * *"],
-  "minimumReleaseAge": "1 day",
+  "minimumReleaseAge": "3 days",
+  "minimumReleaseAgeBehaviour": "timestamp-optional",
   "prConcurrentLimit": 5,
   "labels": ["dependencies"],
   "reviewers": ["genzouw"],
@@ -33,18 +34,6 @@
       "matchManagers": ["github-actions"],
       "semanticCommitType": "ci",
       "addLabels": ["github-actions"]
-    },
-    {
-      "description": [
-        "Docker/OCI 系データソース（GHCR 等）は release timestamp を返さないことがあり、",
-        "既定の minimumReleaseAgeBehaviour: timestamp-required では待機期間を永久に満たせない。",
-        "github-actions など timestamp を取得できるデータソースの防御は緩めず、",
-        "timestamp-optional はこの問題が実際に起きる datasource だけに限定する。",
-        "現時点でこのリポジトリに docker の依存は無く、このルールは何にもマッチしない。",
-        "将来 Dockerfile や devcontainer などを追加したときに、更新が永久に保留されないための備えとして残す。"
-      ],
-      "matchDatasources": ["docker"],
-      "minimumReleaseAgeBehaviour": "timestamp-optional"
     }
   ]
 }
