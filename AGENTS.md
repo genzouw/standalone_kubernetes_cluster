@@ -31,7 +31,7 @@ agents.md をネイティブサポートしないツールを使う場合は、�
     - `DEEPSEEK_API_KEY`, `PERPLEXITY_API_KEY`, `XAI_API_KEY`, `TOGETHER_API_KEY`
     - `HUGGINGFACE_API_TOKEN` (推論 API として使う場合)
   - **「無料枠内に収まる前提」での利用も MUST NOT です**。レート制限到達時に課金が始まる構造そのものを禁止しています。
-  - `OPENAI_API_BASE_URL` はそれ自体が認証情報ではなく接続先 URL であるため、上記のキー一覧とは分離して扱います。**課金可能な外部 API (Gemini や DeepSeek 等の有料 OpenAI 互換エンドポイント) へ向けて `OPENAI_API_BASE_URL` を GitHub Secrets に登録する構成は MUST NOT** です。鍵の名称ではなく「課金可能な API へ繋がる鍵・接続先を登録する行為」を禁止しています。一方、Secrets 登録を伴わずローカル LLM (Ollama 等、GitHub-hosted runner 上で動作するもの) を指す場合は 1.3 節の MAY に従います。
+  - `OPENAI_API_BASE_URL` はそれ自体が認証情報ではなく接続先 URL であるため、上記のキー一覧とは分離して扱います。**課金可能な外部 API (Gemini や DeepSeek 等の有料 OpenAI 互換エンドポイント) へ向けて `OPENAI_API_BASE_URL` を GitHub Secrets に登録する構成は MUST NOT** です。鍵の名称ではなく「課金可能な API へ繋がる鍵・接続先を登録する行為」を禁止しています。なお、Secrets 登録を伴わずローカル LLM (Ollama 等) を runner 上で動かす構成も、別項の MUST NOT に該当します。
 - **MUST NOT**: 従量課金の外部 API キーを要する検索・スクレイピング系サービスの CI 組み込み (`TAVILY_API_KEY`, `EXA_API_KEY`, `SERPAPI_KEY`, `BRAVE_API_KEY` 等)。
 - **MUST NOT**: 有料プラン / 有料ライセンス / 有料トライアル / クレジットカード登録を必要とするサービスの CI 組み込み。
 - **MUST NOT**: 公開 OSS リポジトリでも Pro プラン以上を要求する SaaS の追加。
@@ -39,6 +39,11 @@ agents.md をネイティブサポートしないツールを使う場合は、�
 - **MUST NOT**: 既存テスト / lint / セキュリティスキャンをスキップ / 無効化 / コメントアウトして提出すること。
 - **MUST NOT**: 既に本リポジトリに導入済みのツールと機能が重複する追加 (`.github/workflows/` 配下を必ず事前確認すること)。
 - **MUST NOT**: サードパーティ GitHub Action をタグ参照 (`@v1` 等) のみで導入すること。**フルコミット SHA で pin** してください。
+- **MUST NOT**: ローカル LLM (Ollama / llama.cpp / LocalAI / vLLM 等) を CI の runner 上で起動し、その推論結果を使う自動化の追加。PR レビュー、Issue トリアージ、アクセシビリティ検査、ドキュメント生成、ハルシネーション検知など、用途を問いません。
+  - API キーも課金も不要ですが、それは採用の理由になりません。runner の CPU で動かせる小型モデル (`qwen2.5-coder:0.5b` 等) は出力の質が低く、有害な修正提案を PR に投稿した実例があります ([genzouw/monopo#664](https://github.com/genzouw/monopo/issues/664))。
+  - 「完全無料・シークレットレスな AI 自動化」を掲げた [genzouw/toique#961](https://github.com/genzouw/toique/pull/961) は、同種の PR としてクローズ済みです。類似の PR を作成しないでください。
+  - モデルや実行方法を差し替えても (別のモデル、別のランタイム、コンテナ実行、self-hosted runner) 同じく MUST NOT です。
+  - 禁止しているのは CI/CD および自動化ワークフローへの組み込みです。開発者個人の端末で Ollama 等を動かすことは **MAY** です。
 
 ### 1.2 SHOULD — 強く推奨される慣行
 
@@ -52,7 +57,6 @@ agents.md をネイティブサポートしないツールを使う場合は、�
 - **MAY**: GitHub Marketplace の「公開 OSS リポジトリ向け完全無料プラン」で提供される Action / App。
 - **MAY**: GitHub App の「公開 OSS リポジトリ向け完全無料枠」で、API キーの登録が不要なもの (例: CodeRabbit の OSS 無料枠)。
 - **MAY**: 完全無料で配布されている GitHub Action (Marketplace 登録の有無は問わない)。
-- **MAY**: ローカル LLM (Ollama / llama.cpp 等) を GitHub-hosted runner 上で動作させる、Secrets 不要の自動化。
 - **MAY**: リポジトリ内で完結するスクリプト / Make ターゲット (外部 SaaS 連携を伴わないもの)。
 - **MAY**: 既存ワークフローのキャッシュ最適化、並列化、Action の SHA pin 更新といった、課金を伴わない構造改善。
 
